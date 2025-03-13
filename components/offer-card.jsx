@@ -1,38 +1,29 @@
 import {
   Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-
-import React from "react";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 import { CheckCircle } from "lucide-react";
-export const SolutionsCard = () => {
-  const offers = [
-    "Ongoing AI Implementations",
-    "Minimum 3 Months",
-    "Custom AI Roadmap",
-    "Try Without Risk",
-    "Consulting & Coaching",
-    "Cancel Any Time",
-  ];
 
+export const OfferCard = ({ title, description, offers, icon, buttonText }) => {
   return (
     <Card className="py-6 px-6 bg-[#F5F1E6] border border-black rounded-2xl shadow-lg">
-      <CardHeader>
+      <CardHeader className="text-left">
         <CardTitle className="flex items-center gap-2 text-2xl">
-          <span role="img" aria-label="robot">
-            🤖
-          </span>{" "}
-          Custom AI Solutions
+          {icon || (
+            <span role="img" aria-label="icon">
+              🚀
+            </span>
+          )}{" "}
+          {title}
         </CardTitle>
         <CardDescription className="text-gray-600">
-          Get in-house AI Expertise, designed for teams who need custom agents &
-          automated workflows
+          {description}
         </CardDescription>
       </CardHeader>
       <Separator className="my-4" />
@@ -46,12 +37,12 @@ export const SolutionsCard = () => {
           ))}
         </ul>
       </CardContent>
-      <CardFooter className="flex justify-center">
+      <CardFooter className="mt-4 text-left">
         <Button
           variant="default"
           className="bg-black text-white px-6 py-3 text-lg shadow-md hover:bg-gray-900"
         >
-          Book a Call
+          {buttonText || "Book a Call"}
         </Button>
       </CardFooter>
     </Card>

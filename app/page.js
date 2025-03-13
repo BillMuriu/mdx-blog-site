@@ -4,7 +4,7 @@ import { cn, sortPosts } from "@/lib/utils";
 import { posts } from "#site/content";
 import Link from "next/link";
 import { PostItem } from "@/components/post-item";
-import { SolutionsCard } from "@/components/solutions-card";
+import { OfferCard } from "@/components/offer-card";
 
 export default function Home() {
   const latestPosts = sortPosts(posts).slice(0, 5);
@@ -45,9 +45,40 @@ export default function Home() {
         <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-center">
           Choose your solutions
         </h2>
-        <SolutionsCard />
-        <SolutionsCard />
-        <SolutionsCard />
+        <OfferCard
+          title="Custom AI Solutions"
+          description="Get in-house AI Expertise, designed for teams who need custom agents & automated workflows"
+          offers={[
+            "Ongoing AI Implementations",
+            "Minimum 3 Months",
+            "Custom AI Roadmap",
+            "Try Without Risk",
+            "Consulting & Coaching",
+            "Cancel Any Time",
+          ]}
+          icon={
+            <span role="img" aria-label="robot">
+              🤖
+            </span>
+          }
+        />
+
+        <OfferCard
+          title="Custom n8n Node Development"
+          description="Build, deploy, and maintain custom nodes for your automation workflows"
+          offers={[
+            "Custom n8n Node Development",
+            "Seamless API Integrations",
+            "Performance Optimization",
+            "Ongoing Support & Maintenance",
+            "Scalable Architecture",
+          ]}
+          icon={
+            <span role="img" aria-label="gear">
+              ⚙️
+            </span>
+          }
+        />
       </section>
       <section className="container max-w-4xl py-6 lg:py-10 flex flex-col space-y-6 mt-60">
         <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-center">
