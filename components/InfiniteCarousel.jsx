@@ -35,29 +35,11 @@ const InfiniteCarousel = ({ logos }) => {
   }, []);
   return (
     <div ref={scrollerRef} className="scroller max-w-[800px]">
-      <div className="scroll_inner animate-infinite_scroll flex flex-wrap gap-4 py-4">
-        {logos.map((logo, index) => {
-          return (
-            <Link
-              className="p-1 bg-white flex items-center justify-center"
-              key={index}
-              href="#"
-            >
-              <Image
-                src={logo.src}
-                alt={`logo ${index + 1}`}
-                height={50}
-                width={50}
-              />
-            </Link>
-          );
-        })}
-      </div>
       <div className="scroll_inner animate-infinite_scroll_right flex flex-wrap gap-4 py-4">
         {logos.map((logo, index) => {
           return (
             <Link
-              className="p-1 bg-white flex items-center justify-center"
+              className="p-1 bg-white flex items-center justify-center rounded-sm"
               key={index}
               href="#"
             >

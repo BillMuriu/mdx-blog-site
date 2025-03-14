@@ -7,6 +7,7 @@ import {
   CardContent,
   CardFooter,
 } from "@/components/ui/card";
+import InfiniteCarouselReverse from "./InfiniteCarouselReverse";
 const logos = [
   { src: "logos/airtable.svg" },
   { src: "logos/hubspot.svg" },
@@ -35,6 +36,7 @@ export default function ConnectionsCard() {
           </CardDescription>
         </CardHeader>
         <CardContent>
+          <InfiniteCarouselReverse logos={logos} />
           <InfiniteCarousel logos={logos} />
         </CardContent>
       </Card>
