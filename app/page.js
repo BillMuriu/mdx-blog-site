@@ -5,7 +5,6 @@ import { posts } from "#site/content";
 import Link from "next/link";
 import { PostItem } from "@/components/post-item";
 import { OfferCard } from "@/components/offer-card";
-import IntegrationsCard from "@/components/integrations";
 import ConnectionsCard from "@/components/ConnectionsCard";
 
 export default function Home() {

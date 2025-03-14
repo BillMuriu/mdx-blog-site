@@ -73,10 +73,11 @@ module.exports = {
           to: { height: "0" },
         },
         infinite_scroll: {
-          "100%": { transform: "translate(calc(-50% + 0.25rem))" },
+          "100%": { transform: "translate(calc(-50% - 0.25rem))" },
         },
         infinite_scroll_right: {
-          "100%": { transform: "translate(calc(-50% + 0.25rem))" },
+          "100%": { transform: "translateX(0)" },
+          "0%": { transform: "translateX(calc(-50% - 0.25rem))" },
         },
       },
       animation: {
