@@ -16,7 +16,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={cn("scroll-pt-[3.5rem]", inter.variable)}>
+    <html
+      lang="en"
+      className={cn("scroll-smooth scroll-pt-[3.5rem]", inter.variable)}
+    >
       <body className="min-h-screen bg-background font-sans antialiased">
         <Providers>
           <div className="relative flex min-h-dvh flex-col bg-background">
