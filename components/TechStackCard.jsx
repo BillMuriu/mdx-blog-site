@@ -1,101 +1,146 @@
-import Image from "next/image";
-import Link from "next/link";
 import {
   Card,
+  CardContent,
+  CardDescription,
   CardHeader,
   CardTitle,
-  CardDescription,
-  CardContent,
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { Badge } from "@/components/ui/badge";
+import Image from "next/image";
+import Link from "next/link";
 
-const tech = {
-  development: [
-    { src: "logos/vscode.svg", alt: "VS Code" },
-    { src: "logos/react.svg", alt: "React" },
+const techLogos = {
+  noCode: [
     { src: "logos/hubspot.svg", alt: "HubSpot" },
     { src: "logos/airtable.svg", alt: "Airtable" },
   ],
-  storage: [
-    { src: "logos/postgresql.svg", alt: "PostgreSQL" },
-    { src: "logos/mongodb.svg", alt: "MongoDB" },
+  code: [
+    { src: "logos/hubspot.svg", alt: "HubSpot" },
+    { src: "logos/airtable.svg", alt: "Airtable" },
   ],
   deployment: [
-    { src: "logos/vercel.svg", alt: "Vercel" },
-    { src: "logos/netlify.svg", alt: "Netlify" },
+    { src: "logos/hubspot.svg", alt: "HubSpot" },
+    { src: "logos/airtable.svg", alt: "Airtable" },
+  ],
+  database: [
+    { src: "logos/hubspot.svg", alt: "HubSpot" },
+    { src: "logos/airtable.svg", alt: "Airtable" },
   ],
 };
 
-const LogoBar = ({ items }) => (
-  <div className="flex flex-wrap gap-3">
-    {items.map((item, i) => (
-      <Link
-        key={i}
-        href="#"
-        className="bg-muted p-2 rounded-md flex items-center justify-center shadow-sm w-12 h-12 hover:scale-105 transition-transform"
-      >
-        <Image src={item.src} alt={item.alt} width={28} height={28} />
-      </Link>
-    ))}
-  </div>
-);
-
-export default function TechStack() {
+const TechStackCard = () => {
   return (
-    <section className="py-16">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-semibold">My Tech Stack</h2>
-          <p className="text-muted-foreground text-base mt-2">
-            Technologies I use to build, store, and deploy.
-          </p>
+    <Card className="w-full border-none bg-transparent">
+      <CardHeader className="p-4">
+        <CardTitle>Tech Stack</CardTitle>
+        <CardDescription>
+          A breakdown of technologies used for development, storage, and
+          deployment.
+        </CardDescription>
+      </CardHeader>
+      <Separator className="scroller" />
+      <CardContent className="flex flex-col md:flex-row justify-between items-start text-left gap-12">
+        {/* Development Section */}
+        <div className="flex p-4 flex-col w-full md:w-1/3 space-y-4">
+          <Badge className="w-fit text-sm px-3 py-1 border-border text-foreground bg-transparent">
+            Development
+          </Badge>
+          <div className="space-y-4">
+            <div>
+              <h6 className="text-xs font-medium mb-2">No-Code</h6>{" "}
+              {/* Smaller font */}
+              <div className="flex gap-2">
+                {techLogos.noCode.map((logo, index) => (
+                  <Link
+                    key={index}
+                    href="#"
+                    className="p-2 bg-card flex items-center justify-center rounded-sm shadow-lg"
+                  >
+                    <Image
+                      src={logo.src}
+                      alt={logo.alt}
+                      width={50}
+                      height={50}
+                    />
+                  </Link>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h6 className="text-xs font-medium mb-2">Code</h6>{" "}
+              {/* Smaller font */}
+              <div className="flex gap-2">
+                {techLogos.code.map((logo, index) => (
+                  <Link
+                    key={index}
+                    href="#"
+                    className="p-2 bg-card flex items-center justify-center rounded-sm shadow-lg"
+                  >
+                    <Image
+                      src={logo.src}
+                      alt={logo.alt}
+                      width={50}
+                      height={50}
+                    />
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <Card className="rounded-2xl border border-border bg-card text-card-foreground shadow-sm">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-lg font-semibold">
-                Development
-              </CardTitle>
-              <CardDescription className="text-sm text-muted-foreground">
-                From code to no-code tools I craft with.
-              </CardDescription>
-            </CardHeader>
-            <Separator />
-            <CardContent className="pt-4">
-              <LogoBar items={tech.development} />
-            </CardContent>
-          </Card>
+        {/* Vertical Separator (Hidden on Mobile) */}
+        <Separator
+          orientation="vertical"
+          className="hidden md:block h-40 w-px bg-gray-300"
+        />
 
-          <Card className="rounded-2xl border border-border bg-card text-card-foreground shadow-sm">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-lg font-semibold">Storage</CardTitle>
-              <CardDescription className="text-sm text-muted-foreground">
-                Reliable, scalable data storage.
-              </CardDescription>
-            </CardHeader>
-            <Separator />
-            <CardContent className="pt-4">
-              <LogoBar items={tech.storage} />
-            </CardContent>
-          </Card>
-
-          <Card className="rounded-2xl border border-border bg-card text-card-foreground shadow-sm">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-lg font-semibold">
-                Deployment
-              </CardTitle>
-              <CardDescription className="text-sm text-muted-foreground">
-                Platforms I trust to ship work.
-              </CardDescription>
-            </CardHeader>
-            <Separator />
-            <CardContent className="pt-4">
-              <LogoBar items={tech.deployment} />
-            </CardContent>
-          </Card>
+        {/* Storage Section */}
+        <div className="flex flex-col p-4 w-full md:w-1/3 space-y-4">
+          <Badge className="w-fit text-sm px-3 py-1 border-border text-foreground bg-transparent">
+            Storage
+          </Badge>
+          <div className="flex gap-2">
+            {techLogos.database.map((logo, index) => (
+              <Link
+                key={index}
+                href="#"
+                className="p-2 bg-card flex items-center justify-center rounded-sm shadow-lg"
+              >
+                <Image src={logo.src} alt={logo.alt} width={50} height={50} />
+              </Link>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+
+        {/* Vertical Separator (Hidden on Mobile) */}
+        <Separator
+          orientation="vertical"
+          className="hidden md:block h-40 w-px bg-gray-300 scroller"
+        />
+
+        {/* Deployment Section */}
+        <div className="flex p-4  flex-col w-full md:w-1/3 space-y-4">
+          <Badge className="w-fit text-sm px-3 py-1 border-border text-foreground bg-transparent">
+            Deployment
+          </Badge>
+          <div className="flex gap-2">
+            {techLogos.deployment.map((logo, index) => (
+              <Link
+                key={index}
+                href="#"
+                className="p-2 bg-card flex items-center justify-center rounded-sm shadow-lg"
+              >
+                <Image src={logo.src} alt={logo.alt} width={50} height={50} />
+              </Link>
+            ))}
+          </div>
+        </div>
+      </CardContent>
+      <Separator className="scroller" />
+    </Card>
   );
-}
+};
+
+export default TechStackCard;
