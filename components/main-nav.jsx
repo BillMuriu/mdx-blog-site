@@ -2,6 +2,7 @@
 
 import { siteConfig } from "@/config/site";
 import { Icons } from "./icons";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -11,7 +12,13 @@ export function MainNav() {
   return (
     <nav className="flex items-center space-x-4 lg:space-x-6 border-none">
       <Link href="/" className="mr-6 flex items-center space-x-2">
-        <Icons.logo className="h-6 w-6" />
+        <Image
+          src="/favicon.ico"
+          alt="Logo"
+          width={24}
+          height={24}
+          className="rounded"
+        />
         <span className="font-bold">{siteConfig.name}</span>
       </Link>
       <Link
@@ -23,7 +30,7 @@ export function MainNav() {
       >
         Blog
       </Link>
-      <Link
+      {/* <Link
         href="/about"
         className={cn(
           "text-sm font-medium transition-colors hover:text-primary hidden sm:inline-block",
@@ -31,7 +38,7 @@ export function MainNav() {
         )}
       >
         About
-      </Link>
+      </Link> */}
     </nav>
   );
 }

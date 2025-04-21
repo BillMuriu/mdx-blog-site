@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
+import Image from "next/image";
 import { Button } from "./ui/button";
 import { Menu } from "lucide-react";
 import Link from "next/link";
@@ -25,29 +26,31 @@ export function MobileNav() {
         <MobileLink
           onOpenChange={setOpen}
           href="/"
-          className="flex items-center"
+          className="flex gap-2 items-center"
         >
-          <Icons.logo className="mr-2 h-4 w-4" />
+          <Image
+            src="/favicon.ico"
+            alt="Logo"
+            width={24}
+            height={24}
+            className="rounded"
+          />
           <span className="font-bold">{siteConfig.name}</span>
         </MobileLink>
-        
+
         <div className="flex flex-col gap-3 mt-3">
           <MobileLink onOpenChange={setOpen} href="/blog">
             Blog
           </MobileLink>
-          <MobileLink onOpenChange={setOpen} href="/about">
+          {/* <MobileLink onOpenChange={setOpen} href="/about">
             About
           </MobileLink>
           <a target="_blank" rel="noreferrer" href={siteConfig.links.github}>
             GitHub
-          </a>
-          <a
-            target="_blank"
-            rel="noreferrer"
-            href={siteConfig.links.twitter}
-          >
+          </a> */}
+          {/* <a target="_blank" rel="noreferrer" href={siteConfig.links.twitter}>
             Twitter
-          </a>
+          </a> */}
         </div>
       </SheetContent>
     </Sheet>

@@ -1,5 +1,8 @@
 import { buttonVariants } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import { siteConfig } from "@/config/site";
+import { Badge } from "@/components/ui/badge";
+import Image from "next/image";
 import { cn, sortPosts } from "@/lib/utils";
 import { posts } from "#site/content";
 import Link from "next/link";
@@ -7,49 +10,56 @@ import { PostItem } from "@/components/post-item";
 import { OfferCard } from "@/components/offer-card";
 import ConnectionsCard from "@/components/ConnectionsCard";
 import TechStackCard from "@/components/TechStackCard";
+import TechStack from "@/components/TechStackCard";
 
 export default function Home() {
-  const latestPosts = sortPosts(posts).slice(0, 5);
+  const latestPosts = sortPosts(posts.filter((post) => post.published));
 
   return (
     <>
-      <section className="space-y-6 pb-8 pt-6 md:pb-12 md:mt-10 lg:py-32">
-        <div className="container flex flex-col gap-4 text-center">
-          <h1 className="text-3xl sm:text-3xl md:text-6xl lg:text-5xl font-black text-balance">
-            Implement custom ai workflows to your business
-          </h1>
-          <p className="max-w-[42rem] mx-auto text-muted-foreground sm:text-xl text-balance">
-            Welcome to my blog template. Built using tailwind, shadcn, velite
-            and Nextjs 14.
-          </p>
-          <div className="flex flex-col gap-4 justify-center sm:flex-row">
-            <Link
-              href="/blog"
-              className={cn(buttonVariants({ size: "lg" }), "w-full sm:w-fit")}
-            >
-              Book a free dicovery call
-            </Link>
-            {/* <Link
-              href={siteConfig.links.github}
-              target="_blank"
-              rel="noreferrer"
-              className={cn(
-                buttonVariants({ variant: "outline", size: "lg" }),
-                "w-full sm:w-fit"
-              )}
-            >
-              GitHub
-            </Link> */}
+      <section className="container max-w-4xl py-10 md:py-20 lg:py-32">
+        <div className="flex flex-col-reverse md:flex-row md:items-start items-center justify-between gap-10">
+          <div className="text-center md:text-left space-y-6 w-full">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-black leading-tight text-balance">
+              Supercharge Your Business with{" "}
+              <span className="text-primary">Custom AI Integrations</span>
+            </h2>
+            <p className="text-muted-foreground text-lg sm:text-xl leading-relaxed">
+              I help founders, small teams, and businesses automate workflows,
+              build AI agents, and integrate smart systems that save time and
+              scale effortlessly.
+            </p>
+          </div>
+
+          <div className="shrink-0 w-40 h-40 sm:w-56 sm:h-56 rounded-full overflow-hidden border border-border shadow-md">
+            {/* <Image src="/your-image.jpg" alt="Your Name" className="w-full h-full object-cover" /> */}
           </div>
         </div>
       </section>
-      <section className="container max-w-4xl py-6 lg:py-10 flex flex-col space-y-6 mt-60">
-        {/* <IntegrationsCard /> */}
-        <ConnectionsCard />
-      </section>
-      <section className="container max-w-4xl py-6 lg:py-10 flex flex-col space-y-6 mt-60">
+
+      <section className="container max-w-4xl py-6 lg:py-10 flex flex-col space-y-6 mt-10">
         <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-center">
-          Choose your solutions
+          Who I Work With
+        </h2>
+        <p className="text-muted-foreground text-lg leading-relaxed tracking-tight text-left">
+          I collaborate with{" "}
+          <span className="text-green-600  font-medium">founders</span>,{" "}
+          <span className="text-green-600 font-medium">
+            small business owners
+          </span>
+          , <span className="text-green-600 font-medium">lean teams</span>, and{" "}
+          <span className="text-green-600  font-medium">
+            automation-first startups
+          </span>{" "}
+          who are eager to scale their impact through custom AI workflows,
+          automation, and seamless integrations. These are people who value
+          precision, speed, and clarity — and want their systems to reflect
+          that.
+        </p>
+      </section>
+      <section className="container max-w-4xl py-6 lg:py-10 flex flex-col space-y-6 mt-10">
+        <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-center">
+          Services I Offer
         </h2>
         <OfferCard
           title="Custom AI Solutions"
@@ -86,9 +96,12 @@ export default function Home() {
           }
         />
       </section>
-      <section className="container py-6 lg:py-10 flex flex-col space-y-6 mt-20">
+      <Separator className="scroller" />
+      <section className="container max-w-4xl py-6 lg:py-10 flex flex-col space-y-6 mt-30">
         <TechStackCard />
+        <ConnectionsCard />
       </section>
+      <Separator className="scroller" />
       <section className="container max-w-4xl py-6 lg:py-10 flex flex-col space-y-6 mt-20">
         <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-center">
           Latest Posts
