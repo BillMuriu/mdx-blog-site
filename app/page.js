@@ -10,7 +10,7 @@ import { PostItem } from "@/components/post-item";
 import { OfferCard } from "@/components/offer-card";
 import ConnectionsCard from "@/components/ConnectionsCard";
 import TechStackCard from "@/components/TechStackCard";
-import TechStack from "@/components/TechStackCard";
+import Image from "next/image";
 
 export default function Home() {
   const latestPosts = sortPosts(posts.filter((post) => post.published));
@@ -32,7 +32,14 @@ export default function Home() {
           </div>
 
           <div className="shrink-0 w-40 h-40 sm:w-56 sm:h-56 rounded-full overflow-hidden border border-border shadow-md">
-            {/* <Image src="/your-image.jpg" alt="Your Name" className="w-full h-full object-cover" /> */}
+            <Image
+              src="/Site-Image.jpg" // Make sure this is inside the public/ folder
+              alt="Your Name"
+              width={224}
+              height={224}
+              className="w-full h-full object-cover"
+              priority // Optional: speeds up loading for above-the-fold images
+            />
           </div>
         </div>
       </section>
